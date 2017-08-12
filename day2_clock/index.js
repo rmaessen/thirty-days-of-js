@@ -1,27 +1,18 @@
-var play = function(key) {
-  const audioSrc = key.getAttribute('data-audio-src');
-  key.classList.add("drum-key--played");
-  setTimeout(function() {
-    key.classList.remove("drum-key--played");
-  }, 200);
-  var audio = new Audio(
-    audioSrc
-  );
-  audio.play();
-};
+const secondHand = document.querySelector('.clock__hand--second');
+const minuteHand = document.querySelector('.clock__hand--minute');
+const hourHand = document.querySelector('.clock__hand--hour');
 
-document.addEventListener("keypress", function(e) {
-  console.log(e.keyCode);
-  var key = document.querySelector(
-    '.drum-key[data-keycode="' + e.keyCode + '"]'
-  );
-  if (key) {
-    play(key);
-  }
-});
+var getRotation = function(timeCount){
+	return 90 + timeCount * 6;
+}
 
-document.querySelectorAll(".drum-key").forEach(el =>
-  el.addEventListener("click", function() {
-    play(el);
-  })
-);
+var timeLapse = function(){
+	var date = new Date(),
+		seconds = date.getSeconds(),
+		minutes = date.getMinutes(),
+		hours = date.getHours();
+	secondHand.style.transform = `rotate(${getRotation(seconds)}deg)`;
+	minuteHand.style.transform = `rotate(${getRotation(minutes)}deg)`;
+	hourHand.style.transform = `rotate(${getRotation(hours)}deg)`;
+}
+setInterval(timeLapse, 1000);
