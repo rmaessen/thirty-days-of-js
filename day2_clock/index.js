@@ -7,10 +7,10 @@ var getRotation = function(timeCount){
 }
 
 var timeLapse = function(){
-	var date = new Date(),
-		seconds = date.getSeconds(),
-		minutes = date.getMinutes(),
-		hours = date.getHours();
+	var now = new Date(),
+		seconds = now.getSeconds(),
+		minutes = now.getMinutes(),
+		hours = now.getHours();
 	secondHand.style.transform = `rotate(${getRotation(seconds)}deg)`;
 	minuteHand.style.transform = `rotate(${getRotation(minutes)}deg)`;
 	hourHand.style.transform = `rotate(${getRotation(hours)}deg)`;
