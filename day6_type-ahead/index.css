@@ -1,0 +1,52 @@
+html {
+  font-size: 10px;
+  background-color: orange;
+  height:100%;
+}
+
+body,html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.search__container {
+	display: flex;
+	justify-content:center;
+}
+
+.search__box {
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  margin-top: 10%;
+  width: 60%;
+}
+
+.search__input {
+	padding: 0.8em;
+	border: 6px solid lightgray;
+	font-size: 2em;
+}
+
+.search__results {
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+	font-size: 2em;
+}
+
+.search__result {
+	padding: 1em;
+	background: #fff;
+	border: 1px solid lightgray;
+}
+
+.search__result-meta {
+	float: right;
+	color: lightgray;
+}
+
+.search__highlight {
+	background: yellow;
+}
