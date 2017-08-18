@@ -26,6 +26,7 @@ body,html {
   font-size: 1.4em;
   box-shadow: 6px 6px 6px gray;
   min-width: 40%;
+  max-width: 60%;
 }
 
 .checklist__item {
@@ -36,6 +37,14 @@ body,html {
 
 .checklist__item:last-child {
 	border-bottom: none;
+}
+
+.checklist__item--checked {
+	background-color:lightyellow;
+}
+
+.checklist__item--checked .checklist__item-label {
+	text-decoration: line-through;
 }
 
 .checklist__item label{
