@@ -34,6 +34,7 @@ checkboxes.forEach(
 			let checkboxItem = selected.parentElement.parentElement;
 			checkboxItem.classList.toggle('checklist__item--checked');
 		}
+		
 		lastChecked = selected;
 	}
 ));
