@@ -1,5 +1,5 @@
 html {
-  font-size: 10px;
+  font-size: 12px;
   background-color: purple;
   height:100%;
 }
@@ -17,17 +17,28 @@ body,html {
 	height: 100%;
 }
 
-.player {
+.player__container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+}
+
+.player {
+	position: relative;
+	overflow:hidden;
 }
 
 .player__video {
 
 }
 
-.player__controls {
+.player__controls-container {
+	background-color: rgba(0, 0, 0, 0.4);;
+	position: absolute;
+	bottom: 0;
+	width:100%;
+	transform: translateY(44px);
+	transition: transform 0.5s;
 }
 
 .player__progress-bar {
@@ -41,6 +52,32 @@ body,html {
 	position: absolute;
 	height: 1em;
 	width: 0px;
-	background-color: green;
+	background-color: yellow;
+}
 
+.player__button {
+	background-color: transparent;
+	color: white;
+	border: none;
+	padding: 10px;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  height: 7px;
+  border: 1px solid #bdc3c7;
+  background-color: #fff; 
+}
+
+input[type='range']::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	background-color: yellow;
+	width: 16px;
+	height: 16px;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+i {
+	color: white;
 }

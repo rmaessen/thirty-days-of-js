@@ -1,13 +1,19 @@
-const video = document.querySelector('.player__video');
-const playButton = document.querySelector('.player__play-control');
-const playIcon = document.querySelector('.player__play-icon');
-const progressBarControl = document.querySelector('.player__progress-control');
-const progressBar = document.querySelector('.player__progress-bar');
-const volumeControl = document.querySelector('.player__volume-control');
-let duration = 0;
-let barWidth = window.getComputedStyle(progressBar).width.replace('px', '');
-let dragging = false;
-let playIconClass = 'fa-play';
+const video = document.querySelector('.player__video'),
+ playButton = document.querySelector('.player__play-control'),
+ playIcon = document.querySelector('.player__play-icon'),
+ progressBarControl = document.querySelector('.player__progress-control'),
+ progressBar = document.querySelector('.player__progress-bar'),
+ volumeControl = document.querySelector('.player__volume-control'),
+ rewindControl = document.querySelector('.player__rewind-control'),
+ fastForwardControl = document.querySelector('.player__fast-forward-control'),
+ player = document.querySelector('.player'),
+ controls = document.querySelector('.player__controls-container');
+ 
+let duration = 0,
+ barWidth = window.getComputedStyle(progressBar).width.replace('px', ''),
+ dragging = false,
+ playIconClass = 'fa-play';
+ 
 video.volume = 0.5;
 
 var setPlayIconClass = function(iconClass){
@@ -58,3 +64,21 @@ video.addEventListener('timeupdate', () => {
 		setProgressBar(video.currentTime);
 	}
 });
+
+rewindControl.addEventListener('click', () => {
+	dragging = true;
+	video.currentTime = video.currentTime - 10;
+	setProgressBar(video.currentTime);
+	dragging = false;
+});
+
+fastForwardControl.addEventListener('click', () => {
+	dragging = true;
+	video.currentTime = video.currentTime + 10;
+	setProgressBar(video.currentTime);
+	dragging = false;
+});
+
+player.addEventListener('mouseover', () => controls.style.transform = 'translateY(0)');
+player.addEventListener('mouseout', () => controls.style.transform = 'translateY(44px)');
+
