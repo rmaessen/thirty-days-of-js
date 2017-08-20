@@ -21,6 +21,7 @@ body,html {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	visibility: hidden;
 }
 
 .player {
@@ -29,11 +30,21 @@ body,html {
 }
 
 .player__video {
+	width: 100%;
+	height: auto;
+ }
 
+.player__full-screen-control{
+	float:right;
 }
 
+.player__full-screen-control i{
+	transform: rotate(45deg);
+}
+
+
 .player__controls-container {
-	background-color: rgba(0, 0, 0, 0.4);;
+	background-color: rgba(0, 0, 0, 0.4);
 	position: absolute;
 	bottom: 0;
 	width:100%;
@@ -44,7 +55,7 @@ body,html {
 .player__progress-bar {
 	width: 100%;
 	height: 1em;
-	background-color: lightgrey;
+	background-color: rgba(0, 0, 0, 0.6);
 	position: relative;
 }
 

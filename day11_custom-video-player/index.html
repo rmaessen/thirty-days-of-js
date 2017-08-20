@@ -10,14 +10,15 @@
 	<div class='container'>
 	<div class='player__container'>
 		<div class='player'>
-			<video autoplay width='400' class='player__video' src="https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_id=164"></video>
+			<video autoplay class='player__video' src="https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_id=164"></video>
 			<div class='player__controls-container'>
 				<div class='player__controls'>
 					<div class='player__progress-bar'><div class='player__progress-control'></div></div>
-					<button class='player__play-control player__button'><i class='player__play-icon fa fa-play'></i></button>
+					<button class='player__play-control player__button'><i class='player__play-icon fa fa-pause'></i></button>
 					<i class='fa fa-volume-up'></i><input min='0' max='1' step='0.1' value='0.5' class='player__volume-control' type='range'></input>
-					<button class='player__rewind-control player__button'>10s <i class='fa fa-backward'> </i></button>
-					<button class='player__fast-forward-control player__button'><i class='fa fa-forward'></i>10s</button>
+					<button data-skip='-25' class='player__rewind-control player__button'>25s <i class='fa fa-backward'> </i></button>
+					<button data-skip='10' class='player__fast-forward-control player__button'><i class='fa fa-forward'></i>10s</button>
+					<button class='player__full-screen-control player__button'><i class="fa fa-arrows"></i></button>
 				</div>
 			</div>
 		</div>
