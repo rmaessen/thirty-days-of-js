@@ -13,4 +13,16 @@ var showImages = function(){
 	});
 }
 
-document.addEventListener('scroll', showImages);
+var debounce = function(fn, delay = 20) {
+    var timer = null;
+    return function () {
+        var context = this, args = arguments;
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+            fn.apply(context, args);
+        }, delay);
+    };
+}
+
+document.addEventListener('scroll', debounce(showImages));
+

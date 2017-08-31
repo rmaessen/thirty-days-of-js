@@ -1,0 +1,86 @@
+html {
+	background:url('http://wes.io/hx9M/oh-la-la.jpg') center no-repeat;	background-size: cover;
+	 -webkit-background-size: cover;
+	 -moz-background-size: cover;
+	 -o-background-size: cover;
+	 font-size: 10px;
+	 font-family: Futura-CondensedExtraBold,"Trebuchet MS",Arial,sans-serif
+}
+
+html, body {
+	min-height:100vh;
+}
+
+.order-form__container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 80vh;
+	flex-direction: column;
+}
+
+.order-form__wrapper {
+	padding: 1em;
+	background: rgba(0,0,0,0.1);
+}
+
+.order-form {
+	background: rgba(255,255,255,0.95);
+	padding: 2em;
+	
+}
+
+.order-form__title{
+	font-size: 2em;
+	text-align: center;
+
+}
+
+.order-form__branding {
+	width: 12em;
+	fill: #fff;
+	background: rgba(0,0,0,0.1);
+	border-radius: 50%;
+	padding: 1.5em;
+	margin-bottom: 2.5em;
+}
+
+.order-form__list {
+	padding: 0;
+	margin-bottom: 2em;
+}
+.order-form__item {
+	list-style-type: none;
+	border-bottom: 1px solid lightgray;
+	font-size: 1.4em;
+	font-weight: 600;
+	padding: 0.8em 0;
+}
+
+.order-form__item  label{
+	display: flex;
+}
+
+.order-form__item input[type="checkbox"] {
+	margin-right: 0.5em;
+}
+
+.order-form__editor {
+	display: flex;
+}
+
+.order-form__input {
+	padding: 0.5em;
+	font-size: 1.2em;
+	margin-right: 0.4em;
+}
+
+.order-form__submit {
+	padding: 0.5em;
+	font-weight: 600;
+	background-color: gray;
+	border: 2px solid darkgray;
+	font-size: 1.2em;
+	cursor:pointer;
+}
+
