@@ -56,6 +56,7 @@ const selectAll = (items) => {
 	items.forEach(item => item.checked = true);
 	storeItems();
 	listOut(items, list);
+	newItemInput.focus();
 }
 
 
@@ -63,12 +64,14 @@ const deselectAll = (items) => {
 	items.forEach(item => item.checked = false);
 	storeItems();
 	listOut(items, list);
+	newItemInput.focus();
 }
 
 const removeAll = (items) => {
 	items.length = 0;
 	store.setItem('plates', JSON.stringify(items));
 	listOut(items, list);
+	newItemInput.focus();
 }
 
 addItems.addEventListener('submit', (e)=> {
