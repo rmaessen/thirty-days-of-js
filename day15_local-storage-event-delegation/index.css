@@ -76,11 +76,30 @@ html, body {
 }
 
 .order-form__submit {
+	background-color: darkblue;
+	border: 1px solid darkblue;
+	color: white;
+	padding: 0.6em;
+	font-weight: bold;
+	font-size: 1.2em;
+	cursor: pointer;
+}
+
+.order-form__controls {
+	justify-content: space-between;
+	margin-bottom: 2em;
+	display: none;
+}
+
+.order-form__controls--show {
+	display: flex;
+}
+
+.order-form__select-button {
 	padding: 0.5em;
 	font-weight: 600;
-	background-color: gray;
+	background-color:  rgba(255, 255, 255, .5);
 	border: 2px solid darkgray;
 	font-size: 1.2em;
 	cursor:pointer;
 }
-

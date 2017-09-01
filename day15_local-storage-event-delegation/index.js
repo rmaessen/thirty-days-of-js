@@ -2,9 +2,13 @@ const addItems = document.querySelector('.order-form__add-items'),
 	newItemInput = document.querySelector('.order-form__input'), 
 	list = document.querySelector('.order-form__list'), 
 	itemInputs = document.querySelectorAll('.order-form__item-input'), 
-	store = window.localStorage;
+	store = window.localStorage, 
+	controls = document.querySelector('.order-form__controls'),
+	selectAllControl = document.querySelector('.order-form__select-button--select'),
+	deselectAllControl = document.querySelector('.order-form__select-button--deselect'),
+	removeAllControl = document.querySelector('.order-form__select-button--remove');
 	
-let items = [];
+	let items = [];
 
 const storeItems =  () => {
 	store.setItem('plates', JSON.stringify(items));
@@ -12,23 +16,26 @@ const storeItems =  () => {
 
 const retrieveItems = () => {
 	items = JSON.parse(store.getItem('plates')) || [];
-	listOut();
+	listOut(items, list);
 };
 
-const toggleCheck = function(itemEl){
-	var item = items.find(item => {
-		return itemEl.value === item.name;
-	});
+const toggle = function(e){
+	if(!e.target.matches('input')){
+		return;
+	}
+	var item = items[e.target.dataset.index];
 	item.checked = !item.checked;
 	storeItems();
 }
 
-const listOut = () => {
-	var listItems = items.map(item => {
-		return `<li class='order-form__item'><label><input ${item.checked ? 'checked=checked' : ''} type='checkbox'/>${item.name}</label></li>`
+const listOut = (items = [], listElement) => {
+	var listItems = items.map((item, index) => {
+		return `<li class='order-form__item'><label><input class='order-form__item-input' data-index=${index} ${item.checked ? 'checked=checked' : ''} type='checkbox'/>${item.name}</label></li>`
 	});
 	
-	list.innerHTML = listItems.join('');
+	items.length > 1 ? controls.classList.add('order-form__controls--show') : controls.classList.remove('order-form__controls--show');
+
+	listElement.innerHTML = listItems.join('');
 }
 
 const addItem = function(newItem){
@@ -39,9 +46,29 @@ const addItem = function(newItem){
 	}
 	
 	items.push({name: newItem, checked: false});
-	listOut();
-	newItemInput.value = '';
+	listOut(items, list);
 	storeItems();
+	newItemInput.value = '';
+	newItemInput.focus();
+}
+
+const selectAll = (items) => {
+	items.forEach(item => item.checked = true);
+	storeItems();
+	listOut(items, list);
+}
+
+
+const deselectAll = (items) => {
+	items.forEach(item => item.checked = false);
+	storeItems();
+	listOut(items, list);
+}
+
+const removeAll = (items) => {
+	items.length = 0;
+	store.setItem('plates', JSON.stringify(items));
+	listOut(items, list);
 }
 
 addItems.addEventListener('submit', (e)=> {
@@ -50,6 +77,11 @@ addItems.addEventListener('submit', (e)=> {
 	return;
 });
 
-itemInputs.forEach(input => input.addEventListener('change', (el)=>toggleCheck(el)));
+list.addEventListener('click', (e)=>toggle(e));
+
+selectAllControl.addEventListener('click', ()=>selectAll(items));
+deselectAllControl.addEventListener('click',()=>deselectAll(items));
+removeAllControl.addEventListener('click', ()=>removeAll(items));
 
 retrieveItems();
+newItemInput.focus();
